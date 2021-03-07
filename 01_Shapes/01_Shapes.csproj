@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Models\Rectangle.cs" />
     <Compile Include="Models\Shape.cs" />
+    <Compile Include="Models\Square.cs" />
     <Compile Include="Models\Triangle.cs" />
     <Compile Include="Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
