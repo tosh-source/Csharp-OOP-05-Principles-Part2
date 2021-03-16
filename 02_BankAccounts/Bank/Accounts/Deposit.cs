@@ -21,7 +21,7 @@ namespace _02_BankAccounts.Bank.Accounts
 
         public void WithdrawMoney(decimal amountWithdraw)
         {
-            if ((this.Balance + amountWithdraw) <= 0)
+            if ((this.Balance - amountWithdraw) <= 0)
             {
                 Console.WriteLine("No more money in deposit account! You need to add some amounts first!");
             }
