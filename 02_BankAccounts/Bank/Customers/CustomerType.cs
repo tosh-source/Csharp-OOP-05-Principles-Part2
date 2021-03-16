@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace _02_BankAccounts.Bank.Customers
 {
-    class Individuals : ICustomers
+    enum CustomerType
     {
-        public string Name { get; set; }
-        public string Type { get => CustomerType.Individuals.ToString(); }
+        Companies,
+        Individuals
     }
 }

@@ -9,5 +9,6 @@ namespace _02_BankAccounts.Bank.Customers
     class Companies : ICustomers
     {
         public string Name { get; set; }
+        public string Type { get => CustomerType.Companies.ToString(); }
     }
 }

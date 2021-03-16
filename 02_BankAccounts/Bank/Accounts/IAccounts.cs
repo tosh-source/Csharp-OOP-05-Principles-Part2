@@ -8,9 +8,11 @@ namespace _02_BankAccounts.Bank.Accounts
 {
     interface IAccounts
     {
-        decimal Balance { get; set; }
-        string Customer { get; set; }
-        decimal InterestRate { get; set; }  //monthly based interest rate
+        decimal Balance { get; }
+        string Customer { get; }
+        int NumberOfMonths { get; }
+        decimal Interest { get; }      //interest amount
+        decimal InterestRate { get; }  //monthly based interest rate
         decimal CalculateInterestRate(int numberOfMonths, decimal interestRate);  //monthly based interest rate
     }
 }

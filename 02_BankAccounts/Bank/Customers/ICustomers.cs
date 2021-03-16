@@ -8,6 +8,7 @@ namespace _02_BankAccounts.Bank.Customers
 {
     interface ICustomers
     {
-        string Name { get; set; }
+        string Name { get; }
+        string Type { get; }
     }
 }

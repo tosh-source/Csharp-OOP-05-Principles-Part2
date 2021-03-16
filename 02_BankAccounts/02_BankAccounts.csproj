@@ -49,6 +49,7 @@
     <Compile Include="Bank\Accounts\Mortgage.cs" />
     <Compile Include="Bank\Bank.cs" />
     <Compile Include="Bank\Customers\Companies.cs" />
+    <Compile Include="Bank\Customers\CustomerType.cs" />
     <Compile Include="Bank\Customers\ICustomers.cs" />
     <Compile Include="Bank\Customers\Individuals.cs" />
     <Compile Include="Tests.cs" />
