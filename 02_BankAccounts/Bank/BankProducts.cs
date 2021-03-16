@@ -34,7 +34,9 @@ namespace _02_BankAccounts.Bank
 
         public BankProducts()
         {
-
+            this.Deposit = new Deposit();
+            this.Loan = new Loan();
+            this.Mortgage = new Mortgage();
         }
     }
 }
