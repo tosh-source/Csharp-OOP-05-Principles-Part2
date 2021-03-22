@@ -8,7 +8,7 @@ namespace _02_BankAccounts.Bank.Customers
 {
     class Individuals : ICustomers
     {
-        public string Name { get; set; }
-        public string Type { get => CustomerType.Individuals.ToString(); }
+        string ICustomers.Name { get; set; }
+        string ICustomers.Type { get; set; }
     }
 }

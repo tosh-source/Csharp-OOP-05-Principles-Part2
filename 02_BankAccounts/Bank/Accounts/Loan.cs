@@ -9,15 +9,29 @@ namespace _02_BankAccounts.Bank.Accounts
 {
     class Loan : IAccounts
     {
+        //Properties
         public decimal Balance { get; set; }
-        public string Customer { get; set; }
         public int NumberOfMonths { get; private set; }
         public decimal Interest { get; private set; }
         public decimal InterestRate { get; private set; }
 
+        //Customer properties
+        public ICustomers Customer { get; set; }
+        public string Name { get ; set ; }
+        public string Type { get ; set ; }
+
+        public Loan()
+        {
+            this.Customer = new Individuals(); //Default customer is set to Individuals.
+        }
+        public Loan(ICustomers customerType)
+        {
+            this.Customer = customerType;
+        }
+
         public void DepositMoney(decimal addAmount)
         {
-           this.Balance += addAmount;
+            this.Balance += addAmount;
         }
 
         public decimal CalculateInterestRate(int numberOfMonths, decimal interestRate)
@@ -25,9 +39,9 @@ namespace _02_BankAccounts.Bank.Accounts
             this.NumberOfMonths = numberOfMonths;
             this.InterestRate = interestRate;
 
-            if (this.Customer == CustomerType.Companies.ToString())
+            if (this.Customer.Type == CustomerType.Companies.ToString())
             {
-                if (numberOfMonths > 2)
+                if (this.NumberOfMonths > 2)
                 {
                     this.Interest = 0;
                 }
@@ -36,9 +50,9 @@ namespace _02_BankAccounts.Bank.Accounts
                     this.Interest = this.NumberOfMonths * this.InterestRate;
                 }
             }
-            else //this.Customer == CustomerType.Individuals.ToString()
+            else //this.Customer.Type == CustomerType.Individuals.ToString()
             {
-                if (numberOfMonths > 3)
+                if (this.NumberOfMonths > 3)
                 {
                     this.Interest = 0;
                 }
