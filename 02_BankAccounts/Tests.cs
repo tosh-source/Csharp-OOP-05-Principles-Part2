@@ -22,6 +22,8 @@ namespace _02_BankAccounts
 
             johnsAccounts.Deposit.Customer.Type = CustomerType.Individuals.ToString();
             johnsAccounts.Deposit.Customer.Name = "John Johns";
+
+
         }
     }
 }

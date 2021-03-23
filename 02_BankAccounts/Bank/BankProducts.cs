@@ -32,11 +32,17 @@ namespace _02_BankAccounts.Bank
             set { mortgage = value; }
         }
 
-        public BankProducts()
+        public BankProducts()  //Default customer is set to Individuals. 
         {
             this.Deposit = new Deposit();
             this.Loan = new Loan();
             this.Mortgage = new Mortgage();
+        }
+        public BankProducts(ICustomers customerType)  //Customers can be: Companies/Individuals
+        {
+            this.Deposit = new Deposit(customerType);
+            this.Loan = new Loan(customerType);
+            this.Mortgage = new Mortgage(customerType);
         }
     }
 }

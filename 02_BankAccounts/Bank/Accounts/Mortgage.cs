@@ -22,7 +22,7 @@ namespace _02_BankAccounts.Bank.Accounts
 
         public Mortgage()
         {
-            this.Customer = new Individuals(); //Default customer is set to Individuals.
+            this.Customer = new Individuals();  //Default customer is set to Individuals.
         }
         public Mortgage(ICustomers customerType)
         {

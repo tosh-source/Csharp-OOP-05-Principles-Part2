@@ -22,7 +22,7 @@ namespace _02_BankAccounts.Bank.Accounts
 
         public Loan()
         {
-            this.Customer = new Individuals(); //Default customer is set to Individuals.
+            this.Customer = new Individuals();  //Default customer is set to Individuals.
         }
         public Loan(ICustomers customerType)
         {
