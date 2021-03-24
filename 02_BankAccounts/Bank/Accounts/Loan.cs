@@ -17,8 +17,8 @@ namespace _02_BankAccounts.Bank.Accounts
 
         //Customer properties
         public ICustomers Customer { get; set; }
-        public string Name { get ; set ; }
-        public string Type { get ; set ; }
+        public string Name { get; set; }
+        public string Type { get; set; }
 
         public Loan()
         {
@@ -41,25 +41,25 @@ namespace _02_BankAccounts.Bank.Accounts
 
             if (this.Customer.Type == CustomerType.Companies.ToString())
             {
-                if (this.NumberOfMonths > 2)
+                this.NumberOfMonths -= 2;
+
+                if (this.NumberOfMonths <= 0)
                 {
-                    this.Interest = 0;
+                    this.NumberOfMonths = 1;
                 }
-                else
-                {
-                    this.Interest = this.NumberOfMonths * this.InterestRate;
-                }
+
+                this.Interest = this.NumberOfMonths * this.InterestRate;
             }
             else //this.Customer.Type == CustomerType.Individuals.ToString()
             {
-                if (this.NumberOfMonths > 3)
+                this.NumberOfMonths -= 3;
+
+                if (this.NumberOfMonths <= 0)
                 {
-                    this.Interest = 0;
+                    this.NumberOfMonths = 1;
                 }
-                else
-                {
-                    this.Interest = this.NumberOfMonths * this.InterestRate;
-                }
+
+                this.Interest = this.NumberOfMonths * this.InterestRate;
             }
 
             return this.Interest;
