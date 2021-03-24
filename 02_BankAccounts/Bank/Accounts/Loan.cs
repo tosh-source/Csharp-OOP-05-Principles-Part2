@@ -50,7 +50,7 @@ namespace _02_BankAccounts.Bank.Accounts
 
                 this.Interest = this.NumberOfMonths * this.InterestRate;
             }
-            else //this.Customer.Type == CustomerType.Individuals.ToString()
+            else if (this.Customer.Type == CustomerType.Individuals.ToString())
             {
                 this.NumberOfMonths -= 3;
 
@@ -60,6 +60,10 @@ namespace _02_BankAccounts.Bank.Accounts
                 }
 
                 this.Interest = this.NumberOfMonths * this.InterestRate;
+            }
+            else
+            {
+                throw new AggregateException();
             }
 
             return this.Interest;
