@@ -8,8 +8,36 @@ namespace _02_BankAccounts.Bank.Customers
 {
     class Companies : ICustomers
     {
-        string ICustomers.Name { get; set; }
-        string ICustomers.Type { get; set; }
+        private string name;
+        private string type;
+
+        string ICustomers.Name
+        {
+            get
+            {
+                return this.name;
+            }
+            set
+            {
+                this.name = value;
+            }
+        }
+        string ICustomers.Type
+        {
+            get
+            {
+                return this.type;
+            }
+            set
+            {
+                this.type = value;
+            }
+        }
+
+        public Companies()
+        {
+            this.type = CustomerType.Companies.ToString();
+        }
     }
 }
 
