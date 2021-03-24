@@ -17,8 +17,8 @@ namespace _02_BankAccounts.Bank.Accounts
 
         //Customer properties
         public ICustomers Customer { get; set; }
-        public string Name { get ; set ; }
-        public string Type { get ; set ; }
+        public string Name { get; set; }
+        public string Type { get; set; }
 
         public Mortgage()
         {
@@ -38,28 +38,47 @@ namespace _02_BankAccounts.Bank.Accounts
         {
             this.NumberOfMonths = numberOfMonths;
             this.InterestRate = interestRate;
+            int discount = 0; //for first 'N' months
 
             if (this.Customer.Type == CustomerType.Companies.ToString())
             {
-                if (this.NumberOfMonths <= 12)
+                discount = 12; //Mortgage accounts have ½ interest for the first `12` months for companies
+
+                if (this.NumberOfMonths <= discount)
                 {
                     this.Interest = (this.NumberOfMonths * this.InterestRate) / 2;
                 }
+                else if (this.NumberOfMonths > discount)
+                {
+                    this.Interest = (discount * this.InterestRate) / 2;
+                    this.Interest += (this.NumberOfMonths - discount) * this.InterestRate;
+                }
                 else
                 {
-                    this.Interest = this.NumberOfMonths * this.InterestRate;
+                    throw new ArgumentOutOfRangeException();
+                }
+
+            }
+            else if (this.Customer.Type == CustomerType.Individuals.ToString())
+            {
+                discount = 6;  //Mortgage accounts have NO interest for the first `6` months for individuals.
+
+                if (this.NumberOfMonths <= discount)
+                {
+                    this.Interest = 0;
+                }
+                else if (this.NumberOfMonths > discount)
+                {
+                    this.Interest += (this.NumberOfMonths - discount) * this.InterestRate;
+                }
+                else
+                {
+                    throw new ArgumentOutOfRangeException();
                 }
             }
-            else  //this.Customer.Type == CustomerType.Individuals.ToString()
+            else
             {
-                if (this.NumberOfMonths <= 6)
-                {
-                    this.Interest = (this.NumberOfMonths * this.InterestRate) / 2;
-                }
-                else
-                {
-                    this.Interest = this.NumberOfMonths * this.InterestRate;
-                }
+                throw new ArgumentException();
             }
 
             return this.Interest;
