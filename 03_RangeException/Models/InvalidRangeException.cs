@@ -47,8 +47,7 @@ namespace _03_RangeException.Models
                 }
                 catch (Exception ex)
                 {
-                    this.ErrorMessage += ex.Message;
-                    throw;
+                    this.ErrorMessage = ex.Message;
                 }
             }
             else if (objectToCompare is int)
