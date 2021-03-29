@@ -12,7 +12,7 @@ namespace _03_RangeException.Models
         public string End { get; private set; }
         public string ErrorMessage { get; private set; }
 
-        public InvalidRangeException(int start, int end) 
+        public InvalidRangeException(int start, int end)
             : this(start.ToString(), end.ToString())
         {
         }
@@ -52,11 +52,55 @@ namespace _03_RangeException.Models
             }
             else if (objectToCompare is int)
             {
+                try
+                {
+                    int tempInt = int.Parse(objectToCompare.ToString());
+                    int startInt = int.Parse(this.Start);
+                    int endInt = int.Parse(this.End);
 
+                    if (tempInt < startInt || tempInt > endInt)
+                    {
+                        throw new ArgumentOutOfRangeException();
+                    }
+                    else
+                    {
+                        this.ErrorMessage = "Everything in range!";
+                    }
+                }
+                catch (ArgumentOutOfRangeException ex)
+                {
+                    this.ErrorMessage = ex.Message;
+                }
+                catch (Exception ex)
+                {
+                    this.ErrorMessage = ex.Message;
+                }
             }
             else if (objectToCompare is string)
             {
+                try
+                {
+                    string tempString = objectToCompare.ToString();
+                    string startString = this.Start;
+                    string endString = this.End;
 
+                    if (tempString.CompareTo(startString) == -1 || tempString.CompareTo(endString) == 1)
+                    {
+                        throw new ArgumentOutOfRangeException();
+                    }
+                    else
+                    {
+                        this.ErrorMessage = "Everything in range!";
+                    }
+                }
+                catch (ArgumentOutOfRangeException ex)
+                {
+                    this.ErrorMessage = ex.Message;
+                }
+                catch (Exception ex)
+                {
+                    this.ErrorMessage = ex.Message;
+                }
             }
         }
     }
